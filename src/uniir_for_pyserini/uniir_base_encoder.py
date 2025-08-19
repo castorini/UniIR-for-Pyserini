@@ -22,7 +22,7 @@ MODEL_REGISTRY = {
 
 class UniIRBaseEncoder(ABC):
     def __init__(self, model_name: str, device="cuda:0"):
-        config_path = files('uniir_for_pyserini.pyserini_integration').joinpath('model_config.yaml')
+        config_path = files('uniir_for_pyserini').joinpath('model_config.yaml')
         
         with config_path.open('r') as f:
             config_data = yaml.safe_load(f)
@@ -38,7 +38,7 @@ class UniIRBaseEncoder(ABC):
         elif "blip" in model_name:
             config = config_data["blip"]["large"] if "large" in model_name else config_data["blip"]["base"]
             config_obj = SimpleNamespace(**config["config"])
-            blip_config = files('uniir_for_pyserini.models.uniir_blip.backbone.configs').joinpath('med_config.json')
+            blip_config = files('models.uniir_blip.backbone.configs').joinpath('med_config.json')
             config["config"] = config_obj
             config["med_config"] = str(blip_config)
         else:

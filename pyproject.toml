@@ -51,4 +51,4 @@ include = [
 ]
 
 [tool.setuptools.package-data]
-"pyserini_integration" = ["model_config.yaml"]
+"uniir_for_pyserini" = ["model_config.yaml"]

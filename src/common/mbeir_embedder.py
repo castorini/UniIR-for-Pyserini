@@ -17,9 +17,9 @@ import numpy as np
 from torch.cuda.amp import autocast
 import transformers
 
-import dist_utils
-from dist_utils import ContiguousDistributedSampler
-from utils import build_model_from_config, set_seed
+import common.dist_utils as dist_utils
+from common.dist_utils import ContiguousDistributedSampler
+from common.utils import build_model_from_config, set_seed
 from data.mbeir_dataset import (
     MBEIRMainDataset,
     MBEIRMainCollator,

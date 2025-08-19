@@ -6,9 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "uniir_for_pyserini"
 version = "0.1.0"
 authors = [
-  { name="Your Name", email="your@email.com" },
+     { name = "Cong Wei", email = "lim142857@gmail.com" },
+     { name = "Wenhu Chen", email = "wenhuchen@uwaterloo.ca" },
+     { name = "Sahel Sharifymoghaddam", email = "sahel.sharifymoghaddam@uwaterloo.ca" }
 ]
-description = "UniIR for Pyserini"
+description = "Fork of the original UniIR repository modified for easy and simple Pyserini integration"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [

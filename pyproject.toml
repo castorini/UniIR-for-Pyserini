@@ -8,11 +8,12 @@ version = "0.1.0"
 authors = [
      { name = "Cong Wei", email = "lim142857@gmail.com" },
      { name = "Wenhu Chen", email = "wenhuchen@uwaterloo.ca" },
-     { name = "Sahel Sharifymoghaddam", email = "sahel.sharifymoghaddam@uwaterloo.ca" }
+     { name = "Sahel Sharifymoghaddam", email = "sahel.sharifymoghaddam@uwaterloo.ca" },
+     { name = "Zibo Guo", email = "daniel168.guo@gmail.com" }
 ]
 description = "Fork of the original UniIR repository modified for easy and simple Pyserini integration"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: Apache Software License",

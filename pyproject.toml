@@ -47,10 +47,10 @@ push = false
 [tool.setuptools.packages.find]
 where = ["src"]
 include = [
-     "uniir_for_pyserini",
-     "common",
-     "data",
-     "models"
+     "uniir_for_pyserini", "uniir_for_pyserini.*",
+     "common", "common.*",
+     "data", "data.*",
+     "models", "models.*"
 ]
 
 [tool.setuptools.package-data]

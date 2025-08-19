@@ -52,3 +52,4 @@ include = [
 
 [tool.setuptools.package-data]
 "uniir_for_pyserini" = ["model_config.yaml"]
+"models" = ["**/*.json"]

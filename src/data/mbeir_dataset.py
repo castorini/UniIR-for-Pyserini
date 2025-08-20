@@ -16,7 +16,7 @@ from torch.utils.data import Dataset
 from typeguard import typechecked
 
 # Project files
-from data.preprocessing.utils import (
+from uniir_for_pyserini.data.preprocessing.utils import (
     format_string,
     hash_did,
     hash_qid,

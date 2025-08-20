@@ -6,7 +6,7 @@ This repository contains a fork of the original UniIR codebase, modified for eas
 
 `current_version = "0.1.0"`
 
-## 📦 Installation
+## Installation
 
 Install the package directly from PyPI:
 

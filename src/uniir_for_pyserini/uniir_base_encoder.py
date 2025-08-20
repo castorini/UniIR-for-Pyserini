@@ -7,10 +7,10 @@ from importlib.resources import files
 import torch
 from huggingface_hub import hf_hub_download
 
-from models.uniir_blip.blip_featurefusion.blip_ff import BLIPFeatureFusion
-from models.uniir_blip.blip_scorefusion.blip_sf import BLIPScoreFusion
-from models.uniir_clip.clip_featurefusion.clip_ff import CLIPFeatureFusion
-from models.uniir_clip.clip_scorefusion.clip_sf import CLIPScoreFusion
+from uniir_for_pyserini.models.uniir_blip.blip_featurefusion.blip_ff import BLIPFeatureFusion
+from uniir_for_pyserini.models.uniir_blip.blip_scorefusion.blip_sf import BLIPScoreFusion
+from uniir_for_pyserini.models.uniir_clip.clip_featurefusion.clip_ff import CLIPFeatureFusion
+from uniir_for_pyserini.models.uniir_clip.clip_scorefusion.clip_sf import CLIPScoreFusion
 
 
 MODEL_REGISTRY = {
@@ -38,7 +38,7 @@ class UniIRBaseEncoder(ABC):
         elif "blip" in model_name:
             config = config_data["blip"]["large"] if "large" in model_name else config_data["blip"]["base"]
             config_obj = SimpleNamespace(**config["config"])
-            blip_config = files('models.uniir_blip.backbone.configs').joinpath('med_config.json')
+            blip_config = files('uniir_for_pyserini.models.uniir_blip.backbone.configs').joinpath('med_config.json')
             config["config"] = config_obj
             config["med_config"] = str(blip_config)
         else:

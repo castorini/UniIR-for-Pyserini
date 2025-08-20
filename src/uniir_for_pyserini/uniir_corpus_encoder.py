@@ -4,9 +4,9 @@ from torch.utils.data import DataLoader
 
 from uniir_for_pyserini.uniir_base_encoder import UniIRBaseEncoder
 from uniir_for_pyserini.mbeir_datasets import MBEIRCorpusDataset
-from data.mbeir_dataset import MBEIRCandidatePoolCollator
-from common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
-from data.preprocessing.utils import format_string, hash_did
+from uniir_for_pyserini.data.mbeir_dataset import MBEIRCandidatePoolCollator
+from uniir_for_pyserini.common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
+from uniir_for_pyserini.data.preprocessing.utils import format_string, hash_did
 
 class CorpusEncoder(UniIRBaseEncoder):
     def __init__(self, model_name: str, device="cuda:0"):

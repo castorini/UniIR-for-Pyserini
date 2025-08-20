@@ -78,7 +78,7 @@ This package supports the following UniIR models from the [TIGER-Lab UniIR Huggi
 
 ## Contact
 
-For contact regarding the Pyserini integration section, please email [Sahel Sharifymoghaddam](sahel.sharifymoghaddam@uwaterloo.ca) or [Daniel Guo](daniel168.guo@gmail.com).
+For contact regarding the Pyserini integration section, please email [Sahel Sharifymoghaddam](mailto:sahel.sharifymoghaddam@uwaterloo.ca) or [Daniel Guo](mailto:daniel168.guo@gmail.com).
 
 For contact regarding the original UniIR codebase, please email the authors of the original UniIR repository.
 

@@ -24,7 +24,7 @@ pip install .
 
 ## Available Models
 
-This package supports the following UniIR models from the [TIGER-Lab Hugging Face Hub](https://huggingface.co/TIGER-Lab):
+This package supports the following UniIR models from the [TIGER-Lab UniIR Hugging Face Hub](https://huggingface.co/TIGER-Lab/UniIR):
 
 - `clip_sf_large`
 - `blip_ff_large`

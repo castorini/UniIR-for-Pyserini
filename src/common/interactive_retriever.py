@@ -13,15 +13,15 @@ import torch.distributed as dist
 from torch.utils.data import DataLoader
 from torch.nn.parallel import DistributedDataParallel as DDP
 
-from data.mbeir_dataset import (
+from uniir_for_pyserini.data.mbeir_dataset import (
     MBEIRInferenceOnlyDataset,
     MBEIRInferenceOnlyCollator,
 )
-import dist_utils
-from dist_utils import ContiguousDistributedSampler
-from mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
-from utils import build_model_from_config, set_seed
-from data.preprocessing.utils import unhash_did, DATASET_IDS, MBEIR_TASK
+import uniir_for_pyserini.common.dist_utils as dist_utils
+from uniir_for_pyserini.common.dist_utils import ContiguousDistributedSampler
+from uniir_for_pyserini.common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
+from uniir_for_pyserini.common.utils import build_model_from_config, set_seed
+from uniir_for_pyserini.data.preprocessing.utils import unhash_did, DATASET_IDS, MBEIR_TASK
 
 
 class Modality(Enum):

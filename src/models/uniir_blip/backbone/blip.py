@@ -10,8 +10,8 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-from models.uniir_blip.backbone.vit import VisionTransformer, interpolate_pos_embed
-from models.uniir_blip.backbone.med import BertConfig, BertModel, BertLMHeadModel
+from uniir_for_pyserini.models.uniir_blip.backbone.vit import VisionTransformer, interpolate_pos_embed
+from uniir_for_pyserini.models.uniir_blip.backbone.med import BertConfig, BertModel, BertLMHeadModel
 from transformers import BertTokenizer
 
 import torch

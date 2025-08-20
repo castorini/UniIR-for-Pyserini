@@ -63,8 +63,6 @@ with embedding_writer:
         batch_info['vector'] = embeddings
         embedding_writer.write(batch_info, MBEIR_FIELDS) 
 
-        # L2 Norm isn't applied here because it is applied in the UniIR wrapper class in Pyserini
-
 # Searching Step
 from pyserini.search.faiss import FaissSearcher
 from pyserini.query_iterator import MBEIRQueryIterator
@@ -84,11 +82,13 @@ for qid, query_data in query_iterator:
     # query_data now contains the structured M-BEIR format:  
     # {'qid', 'query_txt', 'query_img_path', 'query_modality', 'pos_cand_list'}  
       
-    hits = searcher.search(query_data, k=1000)  
+    hits = searcher.search(query_data, k=1000) 
     results[qid] = [(hit.docid, hit.score) for hit in hits]
 ```
 
 ## Available Models
+
+Note: L2 Norm isn't applied during encoding because it is applied in the UniIR wrapper classes in Pyserini
 
 This package supports the following UniIR models from the [TIGER-Lab UniIR Hugging Face Hub](https://huggingface.co/TIGER-Lab/UniIR):
 

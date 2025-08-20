@@ -34,10 +34,10 @@ The following code snippet shows how UniIR models can be used with Pyserini's en
 For full compatible use and features, please use/refer to these [wrapper classes](https://github.com/castorini/pyserini/blob/master/pyserini/encode/_uniir.py) in Pyserini.
 
 ```python
-# Encoding and Indexing Steps
 from pyserini.encode import JsonlCollectionIterator
 from pyserini.encode.optional import FaissRepresentationWriter
 from uniir_for_pyserini.uniir_corpus_encoder import CorpusEncoder
+from uniir_for_pyserini.uniir_query_encoder import QueryEncoder
 
 MBEIR_FIELDS = ['img_path', 'txt', 'modality', 'did']
 
@@ -63,32 +63,13 @@ with embedding_writer:
         batch_info['vector'] = embeddings
         embedding_writer.write(batch_info, MBEIR_FIELDS) 
 
-# Searching Step
-from pyserini.search.faiss import FaissSearcher
-from pyserini.query_iterator import MBEIRQueryIterator
-from uniir_for_pyserini.uniir_query_encoder import QueryEncoder
+        # L2 Norm isn't applied here because it is applied in the UniIR wrapper class in Pyserini
 
 mbeir_query_encoder = QueryEncoder("clip_sf_large")
-
-searcher = FaissSearcher(  
-        'indexes/cirr.clip-sf-large',
-        mbeir_query_encoder  
-    )
-
-query_iterator = MBEIRQueryIterator.from_topics('mbeir_cirr_task7_test.jsonl')
-
-results = {}    
-for qid, query_data in query_iterator:  
-    # query_data now contains the structured M-BEIR format:  
-    # {'qid', 'query_txt', 'query_img_path', 'query_modality', 'pos_cand_list'}  
-      
-    hits = searcher.search(query_data, k=1000) 
-    results[qid] = [(hit.docid, hit.score) for hit in hits]
+# similar steps can be done to perform query encoding
 ```
 
 ## Available Models
-
-Note: L2 Norm isn't applied during encoding because it is applied in the UniIR wrapper classes in Pyserini
 
 This package supports the following UniIR models from the [TIGER-Lab UniIR Hugging Face Hub](https://huggingface.co/TIGER-Lab/UniIR):
 
@@ -103,7 +84,7 @@ For contact regarding the original UniIR codebase, please email the authors of t
 
 ## Citation
 
-If you use this work with Pyserini, please cite Pyserini in addition to the original UniIR paper:
+If you use this work, please cite the original UniIR paper:
 
 ```bibtex
 @article{wei2023uniir,
@@ -111,14 +92,6 @@ If you use this work with Pyserini, please cite Pyserini in addition to the orig
   author={Wei, Cong and Chen, Yang and Chen, Haonan and Hu, Hexiang and Zhang, Ge and Fu, Jie and Ritter, Alan and Chen, Wenhu},
   journal={arXiv preprint arXiv:2311.17136},
   year={2023}
-}
-
-@INPROCEEDINGS{Lin_etal_SIGIR2021_Pyserini,
-   author = "Jimmy Lin and Xueguang Ma and Sheng-Chieh Lin and Jheng-Hong Yang and Ronak Pradeep and Rodrigo Nogueira",
-   title = "{Pyserini}: A {Python} Toolkit for Reproducible Information Retrieval Research with Sparse and Dense Representations",
-   booktitle = "Proceedings of the 44th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2021)",
-   year = 2021,
-   pages = "2356--2362",
 }
 ```
 

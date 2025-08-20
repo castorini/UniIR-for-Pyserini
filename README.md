@@ -31,6 +31,8 @@ pip install .
 
 The following code snippet shows how UniIR models can be used with Pyserini's encoding and indexing pipeline. In this example, `clip-sf-large` model is used to encode the `cirr_task7` corpus into dense vector representations. Similar steps can be done for on-the-fly query encoding using the QueryEncoder.
 
+For full compatible use and features, please use/refer to these [wrapper classes](https://github.com/castorini/pyserini/blob/master/pyserini/encode/_uniir.py) in Pyserini.
+
 ```python
 from pyserini.encode import JsonlCollectionIterator
 from pyserini.encode.optional import FaissRepresentationWriter

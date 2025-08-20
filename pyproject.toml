@@ -49,7 +49,16 @@ packages = [
     "uniir_for_pyserini",
     "uniir_for_pyserini.common",
     "uniir_for_pyserini.data",
-    "uniir_for_pyserini.models"
+    "uniir_for_pyserini.data.preprocessing",
+    "uniir_for_pyserini.models",
+    "uniir_for_pyserini.models.uniir_blip",
+    "uniir_for_pyserini.models.uniir_blip.backbone",
+    "uniir_for_pyserini.models.uniir_blip.backbone.transform",
+    "uniir_for_pyserini.models.uniir_blip.blip_featurefusion",
+    "uniir_for_pyserini.models.uniir_blip.blip_scorefusion",
+    "uniir_for_pyserini.models.uniir_clip",
+    "uniir_for_pyserini.models.uniir_clip.clip_featurefusion",
+    "uniir_for_pyserini.models.uniir_clip.clip_scorefusion"
 ]
 
 [tool.setuptools.package-dir]

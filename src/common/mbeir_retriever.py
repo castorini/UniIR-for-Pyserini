@@ -17,7 +17,7 @@ import faiss
 import pickle
 import torch
 
-from data.preprocessing.utils import (
+from uniir_for_pyserini.data.preprocessing.utils import (
     load_jsonl_as_list,
     save_list_as_jsonl,
     count_entries_in_file,
@@ -27,7 +27,7 @@ from data.preprocessing.utils import (
     unhash_qid,
     get_mbeir_task_name,
 )
-import dist_utils
+import uniir_for_pyserini.common.dist_utils as dist_utils
 from interactive_retriever import InteractiveRetriever
 
 

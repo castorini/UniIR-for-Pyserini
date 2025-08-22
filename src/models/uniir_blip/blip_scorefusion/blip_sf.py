@@ -1,11 +1,11 @@
-from models.uniir_blip.backbone.med import BertConfig, BertModel
+from uniir_for_pyserini.models.uniir_blip.backbone.med import BertConfig, BertModel
 
 import torch
 from torch import nn
 import torch.nn.functional as F
 
-from models.uniir_blip.backbone.blip import create_vit, init_tokenizer, load_checkpoint
-from models.uniir_blip.backbone.transform.blip_transform import get_blip_transform
+from uniir_for_pyserini.models.uniir_blip.backbone.blip import create_vit, init_tokenizer, load_checkpoint
+from uniir_for_pyserini.models.uniir_blip.backbone.transform.blip_transform import get_blip_transform
 
 
 class BLIPScoreFusion(nn.Module):

@@ -68,5 +68,5 @@ packages = [
 "uniir_for_pyserini.models" = "src/models"
 
 [tool.setuptools.package-data]
-"uniir_for_pyserini" = ["model_config.yaml"]
+"uniir_for_pyserini.pyserini_integration" = ["model_config.yaml"]
 "uniir_for_pyserini.models" = ["**/*.json"]

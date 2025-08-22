@@ -46,7 +46,7 @@ push = false
 
 [tool.setuptools]
 packages = [
-    "uniir_for_pyserini",
+    "uniir_for_pyserini.pyserini_integration",
     "uniir_for_pyserini.common",
     "uniir_for_pyserini.data",
     "uniir_for_pyserini.data.preprocessing",
@@ -68,5 +68,5 @@ packages = [
 "uniir_for_pyserini.models" = "src/models"
 
 [tool.setuptools.package-data]
-"uniir_for_pyserini.models" = ["**/*.json"]
 "uniir_for_pyserini" = ["model_config.yaml"]
+"uniir_for_pyserini.models" = ["**/*.json"]

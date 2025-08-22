@@ -6,7 +6,7 @@ import pandas as pd
 from torch.utils.data import DataLoader
 
 from uniir_for_pyserini.pyserini_integration.uniir_base_encoder import UniIRBaseEncoder
-from uniir_for_pyserini.mbeir_datasets import MBEIRQueryDataset
+from uniir_for_pyserini.pyserini_integration.mbeir_datasets import MBEIRQueryDataset
 from uniir_for_pyserini.data.mbeir_dataset import MBEIRInferenceOnlyCollator
 from uniir_for_pyserini.common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
 from uniir_for_pyserini.data.preprocessing.utils import format_string, hash_qid

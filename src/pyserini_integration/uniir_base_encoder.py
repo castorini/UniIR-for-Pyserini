@@ -22,7 +22,7 @@ MODEL_REGISTRY = {
 
 class UniIRBaseEncoder(ABC):
     def __init__(self, model_name: str, device="cuda:0"):
-        config_path = files('uniir_for_pyserini').joinpath('model_config.yaml')
+        config_path = files('uniir_for_pyserini.pyserini_integration').joinpath('model_config.yaml')
         
         with config_path.open('r') as f:
             config_data = yaml.safe_load(f)

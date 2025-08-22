@@ -27,6 +27,11 @@ cd UniIR-for-Pyserini
 pip install .
 ```
 
+Then, install the CLIP model:
+```bash
+pip install git+https://github.com/openai/CLIP.git
+```
+
 ## Quick Start
 
 The following code snippet shows how UniIR models can be used with Pyserini's encoding and indexing pipeline. In this example, `clip-sf-large` model is used to encode the `cirr_task7` corpus into dense vector representations. Similar steps can be done for on-the-fly query encoding using the QueryEncoder.

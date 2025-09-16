@@ -111,11 +111,12 @@ For contact regarding the original UniIR codebase, please email the authors of t
 If you use this work with Pyserini, please cite Pyserini in addition to the original UniIR paper:
 
 ```bibtex
-@article{wei2023uniir,
-  title={Uniir: Training and benchmarking universal multimodal information retrievers},
-  author={Wei, Cong and Chen, Yang and Chen, Haonan and Hu, Hexiang and Zhang, Ge and Fu, Jie and Ritter, Alan and Chen, Wenhu},
-  journal={arXiv preprint arXiv:2311.17136},
-  year={2023}
+@INPROCEEDINGS{wei2024uniir,
+  author = "Cong Wei and Tang Chen and Haonan Chen and Hexiang Hu and Ge Zhang and Jie Fu and Alan Ritter and Wenhu Chen",
+  title = "{UniIR}: Training and Benchmarking Universal Multimodal Information Retrievers",
+  booktitle = "European Conference on Computer Vision",
+  year = 2024,
+  pages ="387--404",
 }
 
 @INPROCEEDINGS{Lin_etal_SIGIR2021_Pyserini,

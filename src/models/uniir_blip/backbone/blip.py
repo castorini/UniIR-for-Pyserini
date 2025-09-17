@@ -1,9 +1,9 @@
 """
- * Copyright (c) 2022, salesforce.com, inc.
- * All rights reserved.
- * SPDX-License-Identifier: BSD-3-Clause
- * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
- * By Junnan Li
+* Copyright (c) 2022, salesforce.com, inc.
+* All rights reserved.
+* SPDX-License-Identifier: BSD-3-Clause
+* For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+* By Junnan Li
 """
 
 import warnings
@@ -180,7 +180,7 @@ class BLIP_Decoder(nn.Module):
                 eos_token_id=self.tokenizer.sep_token_id,
                 pad_token_id=self.tokenizer.pad_token_id,
                 repetition_penalty=1.1,
-                **model_kwargs
+                **model_kwargs,
             )
         else:
             # beam search
@@ -192,7 +192,7 @@ class BLIP_Decoder(nn.Module):
                 eos_token_id=self.tokenizer.sep_token_id,
                 pad_token_id=self.tokenizer.pad_token_id,
                 repetition_penalty=repetition_penalty,
-                **model_kwargs
+                **model_kwargs,
             )
 
         captions = []

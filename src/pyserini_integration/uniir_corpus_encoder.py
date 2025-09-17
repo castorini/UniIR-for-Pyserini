@@ -8,6 +8,7 @@ from uniir_for_pyserini.data.mbeir_dataset import MBEIRCandidatePoolCollator
 from uniir_for_pyserini.common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
 from uniir_for_pyserini.data.preprocessing.utils import format_string, hash_did
 
+
 class CorpusEncoder(UniIRBaseEncoder):
     def __init__(self, model_name: str, device="cuda:0"):
         super().__init__(model_name, device)
@@ -28,16 +29,14 @@ class CorpusEncoder(UniIRBaseEncoder):
             "txt": [format_string(txt) for txt in txts],
         }
         dataset = MBEIRCorpusDataset(batch_info, self.img_preprocess_fn)
-        collator = MBEIRCandidatePoolCollator(
-            tokenizer=self.tokenizer, image_size=(224, 224)
-        )
+        collator = MBEIRCandidatePoolCollator(tokenizer=self.tokenizer, image_size=(224, 224))
         dataloader = DataLoader(dataset, batch_size=batch_len, collate_fn=collator)
 
-        corpus_embeddings, _ = generate_embeds_and_ids_for_dataset_with_gather(  
-            self.model,  
-            dataloader,  
-            device=self.device,  
-            use_fp16=fp16,  
-        )  
+        corpus_embeddings, _ = generate_embeds_and_ids_for_dataset_with_gather(
+            self.model,
+            dataloader,
+            device=self.device,
+            use_fp16=fp16,
+        )
 
         return corpus_embeddings

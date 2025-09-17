@@ -20,11 +20,12 @@ MODEL_REGISTRY = {
     "blip_sf": (BLIPScoreFusion, "BLIP_SF"),
 }
 
+
 class UniIRBaseEncoder(ABC):
     def __init__(self, model_name: str, device="cuda:0"):
-        config_path = files('uniir_for_pyserini.pyserini_integration').joinpath('model_config.yaml')
-        
-        with config_path.open('r') as f:
+        config_path = files("uniir_for_pyserini.pyserini_integration").joinpath("model_config.yaml")
+
+        with config_path.open("r") as f:
             config_data = yaml.safe_load(f)
 
         model_key = next((key for key in MODEL_REGISTRY if key in model_name), None)
@@ -38,7 +39,7 @@ class UniIRBaseEncoder(ABC):
         elif "blip" in model_name:
             config = config_data["blip"]["large"] if "large" in model_name else config_data["blip"]["base"]
             config_obj = SimpleNamespace(**config["config"])
-            blip_config = files('uniir_for_pyserini.models.uniir_blip.backbone.configs').joinpath('med_config.json')
+            blip_config = files("uniir_for_pyserini.models.uniir_blip.backbone.configs").joinpath("med_config.json")
             config["config"] = config_obj
             config["med_config"] = str(blip_config)
         else:
@@ -55,11 +56,7 @@ class UniIRBaseEncoder(ABC):
                 f"Model checkpoint not found: {e}. Please check the model name or ensure the model is available on Hugging Face Hub: https://huggingface.co/TIGER-Lab/UniIR/tree/main/checkpoint."
             )
 
-        model.load_state_dict(
-            torch.load(checkpoint_path, map_location=device, weights_only=False)[
-                "model"
-            ]
-        )
+        model.load_state_dict(torch.load(checkpoint_path, map_location=device, weights_only=False)["model"])
         model.float()
         model.eval()
         model = model.to(device)

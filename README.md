@@ -9,7 +9,7 @@
 
 This repository contains a fork of the original UniIR codebase, modified for easy [Pyserini](https://github.com/castorini/pyserini/) integration and repackaged as a PyPI package.
 
-`current_version = "0.1.0"`
+`current_version = "0.1.1"`
 
 ## Installation
 

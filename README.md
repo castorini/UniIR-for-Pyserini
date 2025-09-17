@@ -16,7 +16,7 @@ This repository contains a fork of the original UniIR codebase, modified for eas
 Install the package directly from PyPI:
 
 ```bash
-pip install uniir_for_pyserini
+pip install uniir-for-pyserini
 ```
 
 Or, install from source:

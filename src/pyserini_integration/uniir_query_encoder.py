@@ -11,6 +11,7 @@ from uniir_for_pyserini.data.mbeir_dataset import MBEIRInferenceOnlyCollator
 from uniir_for_pyserini.common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
 from uniir_for_pyserini.data.preprocessing.utils import format_string, hash_qid
 
+
 class QueryEncoder(UniIRBaseEncoder):
     def __init__(
         self,
@@ -41,18 +42,15 @@ class QueryEncoder(UniIRBaseEncoder):
 
             return instructions, candidate_modality, randomize_instructions
         except Exception as e:
-            raise ValueError(f"Error reading instruction or corpus file: {e}. Please download the instruction file from https://huggingface.co/datasets/TIGER-Lab/M-BEIR/blob/main/instructions/query_instructions.tsv")
+            raise ValueError(
+                f"Error reading instruction or corpus file: {e}. Please download the instruction file from https://huggingface.co/datasets/TIGER-Lab/M-BEIR/blob/main/instructions/query_instructions.tsv"
+            )
 
     def _get_instruction_prompt(self, instructions, c_modality, q_modality, randomize_instructions) -> Optional[str]:
         for instruction in instructions:
-            if (
-                instruction["query_modality"] == q_modality
-                and instruction["cand_modality"] == c_modality
-            ):
+            if instruction["query_modality"] == q_modality and instruction["cand_modality"] == c_modality:
                 if randomize_instructions:
-                    prompts = [
-                        instruction[k] for k in instruction if k.startswith("prompt_")
-                    ]
+                    prompts = [instruction[k] for k in instruction if k.startswith("prompt_")]
                     return random.choice(prompts) if prompts else None
                 else:
                     return instruction["prompt_1"]
@@ -67,9 +65,7 @@ class QueryEncoder(UniIRBaseEncoder):
         fp16: bool = False,
     ):
         if instruction_config:
-            instructions, candidate_modality, randomize_instructions = (
-                self._load_instruction_config(instruction_config)
-            )
+            instructions, candidate_modality, randomize_instructions = self._load_instruction_config(instruction_config)
             prompt = self._get_instruction_prompt(
                 instructions=instructions,
                 c_modality=candidate_modality,
@@ -79,24 +75,24 @@ class QueryEncoder(UniIRBaseEncoder):
             if prompt is not None:
                 query_txt = f"{prompt} {query_txt}" if query_txt else prompt
 
-        query_info = [{
-            "qid": hash_qid(qid),
-            "query_txt": format_string(query_txt),
-            "query_img_path": query_img_path,
-            "query_modality": query_modality,
-        }]
+        query_info = [
+            {
+                "qid": hash_qid(qid),
+                "query_txt": format_string(query_txt),
+                "query_img_path": query_img_path,
+                "query_modality": query_modality,
+            }
+        ]
 
         dataset = MBEIRQueryDataset(query_info, self.img_preprocess_fn)
-        collator = MBEIRInferenceOnlyCollator(
-            tokenizer=self.tokenizer, image_size=(224, 224)
-        )
+        collator = MBEIRInferenceOnlyCollator(tokenizer=self.tokenizer, image_size=(224, 224))
         dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
 
-        query_embeddings, _ = generate_embeds_and_ids_for_dataset_with_gather(  
-            self.model,  
-            dataloader,  
-            device=self.device,  
+        query_embeddings, _ = generate_embeds_and_ids_for_dataset_with_gather(
+            self.model,
+            dataloader,
+            device=self.device,
             use_fp16=fp16,
-        )  
+        )
 
         return query_embeddings

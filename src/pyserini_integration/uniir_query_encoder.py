@@ -28,7 +28,7 @@ class QueryEncoder(UniIRBaseEncoder):
             candidate_modality = config.get("candidate_modality", None)
             dataset_id = config.get("dataset_id", None)
             randomize_instructions = config.get("randomize_instructions", False)
-            if not instruction_file or not candidate_modality or not dataset_id:
+            if instruction_file is None or candidate_modality is None or dataset_id is None:
                 raise ValueError(
                     "Instruction file, candidate_modality, or dataset_id is missing in the config. Please download the instruction file from https://huggingface.co/datasets/TIGER-Lab/M-BEIR/blob/main/instructions/query_instructions.tsv"
                 )

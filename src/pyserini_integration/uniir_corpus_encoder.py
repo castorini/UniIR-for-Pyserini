@@ -1,12 +1,14 @@
 from typing import List
 
 from torch.utils.data import DataLoader
-
-from uniir_for_pyserini.pyserini_integration.uniir_base_encoder import UniIRBaseEncoder
-from uniir_for_pyserini.pyserini_integration.mbeir_datasets import MBEIRCorpusDataset
+from uniir_for_pyserini.common.mbeir_embedder import \
+    generate_embeds_and_ids_for_dataset_with_gather
 from uniir_for_pyserini.data.mbeir_dataset import MBEIRCandidatePoolCollator
-from uniir_for_pyserini.common.mbeir_embedder import generate_embeds_and_ids_for_dataset_with_gather
 from uniir_for_pyserini.data.preprocessing.utils import format_string, hash_did
+from uniir_for_pyserini.pyserini_integration.mbeir_datasets import \
+    MBEIRCorpusDataset
+from uniir_for_pyserini.pyserini_integration.uniir_base_encoder import \
+    UniIRBaseEncoder
 
 
 class CorpusEncoder(UniIRBaseEncoder):
@@ -28,8 +30,11 @@ class CorpusEncoder(UniIRBaseEncoder):
             "modality": modalitys,
             "txt": [format_string(txt) for txt in txts],
         }
+
         dataset = MBEIRCorpusDataset(batch_info, self.img_preprocess_fn)
-        collator = MBEIRCandidatePoolCollator(tokenizer=self.tokenizer, image_size=(224, 224))
+        collator = MBEIRCandidatePoolCollator(
+            tokenizer=self.tokenizer, image_size=(224, 224)
+        )
         dataloader = DataLoader(dataset, batch_size=batch_len, collate_fn=collator)
 
         corpus_embeddings, _ = generate_embeds_and_ids_for_dataset_with_gather(

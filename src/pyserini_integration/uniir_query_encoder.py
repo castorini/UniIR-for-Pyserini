@@ -116,11 +116,6 @@ class QueryEncoder(UniIRBaseEncoder):
                     f"{prompt} {query_txt}" if query_txt else prompt
                     for query_txt in query_txts
                 ]
-                with open(self.query_texts_path, "a") as f:
-                    for qid, query_txt in zip(qids, query_txts):
-                        json.dump({"qid": qid, "query_txt": query_txt}, f)
-                        f.write("\n")
-            assert prompt
 
         query_info = {
             "qid": [hash_qid(qid) for qid in qids],

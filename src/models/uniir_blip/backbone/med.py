@@ -36,15 +36,11 @@ from transformers.modeling_outputs import (
     SequenceClassifierOutput,
     TokenClassifierOutput,
 )
-try:
-    from transformers.pytorch_utils import (
-        apply_chunking_to_forward,
-        find_pruneable_heads_and_indices,
-        prune_linear_layer,
-    )
-except ImportError:
-    from transformers.pytorch_utils import apply_chunking_to_forward, prune_linear_layer
+from transformers.pytorch_utils import apply_chunking_to_forward, prune_linear_layer
 
+try:
+    from transformers.pytorch_utils import find_pruneable_heads_and_indices
+except ImportError:
     def find_pruneable_heads_and_indices(heads, n_heads, head_size, already_pruned_heads):
         heads = set(heads) - already_pruned_heads
         mask = torch.ones(n_heads, head_size)

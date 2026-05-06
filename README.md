@@ -42,7 +42,7 @@ For full compatible use and features, please use/refer to these [wrapper classes
 # Encoding and Indexing Steps
 from pyserini.encode import JsonlCollectionIterator
 from pyserini.encode.optional import FaissRepresentationWriter
-from uniir_for_pyserini.uniir_corpus_encoder import CorpusEncoder
+from uniir_for_pyserini.pyserini_integration.uniir_corpus_encoder import CorpusEncoder
 
 MBEIR_FIELDS = ['img_path', 'txt', 'modality', 'did']
 
@@ -71,7 +71,7 @@ with embedding_writer:
 # Searching Step
 from pyserini.search.faiss import FaissSearcher
 from pyserini.query_iterator import MBEIRQueryIterator
-from uniir_for_pyserini.uniir_query_encoder import QueryEncoder
+from uniir_for_pyserini.pyserini_integration.uniir_query_encoder import QueryEncoder
 
 mbeir_query_encoder = QueryEncoder("clip_sf_large")
 
